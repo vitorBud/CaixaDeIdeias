@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixas de Ideias Diárias</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="notification" id="notification"></div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-lightbulb"></i>
+                    <h1>Caixas de Ideias Diárias</h1>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-primary" id="todayBtn">
+                        <i class="fas fa-calendar-day"></i> Hoje
+                    </button>
+                    <button class="btn btn-primary" id="allBtn">
+                        <i class="fas fa-list"></i> Todas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="dashboard">
+                <div class="dashboard-header">
+                    <h2 class="dashboard-title">Suas Ideias de Hoje</h2>
+                    <div class="date-display" id="currentDate"></div>
+                </div>
+
+                <div class="ideas-container" id="ideasContainer">
+                    <!-- As caixas de ideias serão inseridas aqui via JavaScript -->
+                </div>
+
+                <div class="empty-state" id="emptyState">
+                    <i class="fas fa-inbox"></i>
+                    <p>Nenhuma ideia para hoje. Que tal adicionar uma?</p>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="stats-box">
+                    <h3>Estatísticas</h3>
+                    <div class="stat">
+                        <span>Ideias Hoje:</span>
+                        <span class="stat-value" id="todayCount">0</span>
+                    </div>
+                    <div class="stat">
+                        <span>Total de Ideias:</span>
+                        <span class="stat-value" id="totalCount">0</span>
+                    </div>
+                    <div class="stat">
+                        <span>Concluídas:</span>
+                        <span class="stat-value" id="completedCount">0</span>
+                    </div>
+                    <div class="stat">
+                        <span>Taxa de Conclusão:</span>
+                        <span class="stat-value" id="completionRate">0%</span>
+                    </div>
+                </div>
+
+                <div class="add-box">
+                    <h3>Adicionar Nova Ideia</h3>
+                    <div class="form-group">
+                        <label for="ideaTitle">Título</label>
+                        <input type="text" class="form-control" id="ideaTitle" placeholder="Título da sua ideia">
+                    </div>
+                    <div class="form-group">
+                        <label for="ideaContent">Conteúdo</label>
+                        <textarea class="form-control" id="ideaContent"
+                            placeholder="Descreva sua ideia ou meta"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="ideaCategory">Categoria</label>
+                        <select class="form-control" id="ideaCategory">
+                            <option value="meta">Meta</option>
+                            <option value="pensamento">Pensamento</option>
+                            <option value="ideia">Ideia</option>
+                            <option value="lembrete">Lembrete</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-success" id="addIdeaBtn">
+                        <i class="fas fa-plus"></i> Adicionar Ideia
+                    </button>
+                </div>
+
+                <div class="chart-box">
+                    <h3>Progresso Semanal</h3>
+                    <div class="chart-container">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para edição -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Editar Ideia</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="form-group">
+                <label for="editTitle">Título</label>
+                <input type="text" class="form-control" id="editTitle">
+            </div>
+            <div class="form-group">
+                <label for="editContent">Conteúdo</label>
+                <textarea class="form-control" id="editContent"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="editCategory">Categoria</label>
+                <select class="form-control" id="editCategory">
+                    <option value="meta">Meta</option>
+                    <option value="pensamento">Pensamento</option>
+                    <option value="ideia">Ideia</option>
+                    <option value="lembrete">Lembrete</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" id="cancelEdit">Cancelar</button>
+                <button class="btn btn-success" id="saveEdit">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Caixas de Ideias Diárias &copy; 2023 - Organize suas metas e pensamentos</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
